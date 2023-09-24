@@ -1,0 +1,16 @@
+name: project-d
+
+agents:
+  - launch:
+    launches:
+      - name: web-acceptance
+        platform: WEB
+        type: ACCEPTANCE
+      - name: web-smoke
+        platform: WEB
+        type: SMOKE
+  - coverage:
+    providers:
+      projectId: 1099
+    platforms:
+      - platform: WEB

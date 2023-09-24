@@ -1,0 +1,33 @@
+scan-depth-days: 14
+
+projects:
+  - projects/project-a.yaml
+  - projects/project-b.yaml
+  - projects/project-c.yaml
+  - projects/project-d.yaml
+
+launch:
+  providers:
+    - type: report-portal
+      base-url: 'http://localhost:1080/report-portal'
+      token: 'dfoigjspoiedjgbwopiergweufvhwoiedfuhvweir'
+  strategies:
+    - type: default
+      grades:
+        reliability: [ 95, 85 ]
+        frequency: [ 32, 72 ]
+        duration: [ 30, 60 ]
+
+coverage:
+  providers:
+    - type: test-rail
+      base-url: 'http://localhost:1080/test-rail'
+      username: 'test-automation-health-monitoring@mail.host'
+      token: 'dfoigjspoiedjgbwopiergweufvhwoiedfuhvweir'
+      appName: 'ta-health-monitoring-agent'
+      suiteIds: [ master ]
+  strategies:
+    - type: default
+      grades:
+        overall: [ 70, 50 ]
+        byCritical: [ 90, 70 ]

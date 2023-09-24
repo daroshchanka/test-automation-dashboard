@@ -1,0 +1,68 @@
+name: project-a
+scan-depth-days: 14
+
+agents:
+  - launch:
+    launches:
+      - name: web-acceptance
+        platform: WEB
+        type: ACCEPTANCE
+        provider:
+          type: report-portal
+          base-url: 'http://localhost:1080/report-portal'
+          token: 'dfoigjspoiedjgbwopiergweufvhwoiedfuhvweir'
+      - name: web-smoke
+        platform: WEB
+        type: SMOKE
+        provider:
+          type: report-portal
+          base-url: 'http://localhost:1080/report-portal'
+          token: 'dfoigjspoiedjgbwopiergweufvhwoiedfuhvweir'
+        strategy:
+          type: default
+          grades:
+            frequency: [ 24, 48 ]
+            duration: [ 15, 30 ]
+      - name: api
+        platform: API
+        type: SMOKE
+        provider:
+          type: report-portal
+          base-url: 'http://localhost:1080/report-portal'
+          token: 'dfoigjspoiedjgbwopiergweufvhwoiedfuhvweir'
+        strategy:
+          type: default
+          grades:
+            reliability: [ 97, 95 ]
+            frequency: [ 24, 48 ]
+            duration: [ 7, 12 ]
+  - coverage:
+    platforms:
+      - platform: WEB
+        provider:
+          type: test-rail
+          base-url: 'http://localhost:1080/test-rail'
+          username: 'test-automation-health-monitoring@mail.host'
+          token: 'dfoigjspoiedjgbwopiergweufvhwoiedfuhvweir'
+          appName: 'ta-health-monitoring-agent'
+          projectId: 1071
+          suiteIds: [ 715, 934 ]
+        strategy:
+          type: default
+          grades:
+            overall: [ 70, 50 ]
+            byCritical: [ 90, 70 ]
+      - platform: API
+        provider:
+          type: test-rail
+          base-url: 'http://localhost:1080/test-rail'
+          username: 'test-automation-health-monitoring@mail.host'
+          token: 'dfoigjspoiedjgbwopiergweufvhwoiedfuhvweir'
+          appName: 'ta-health-monitoring-agent'
+          projectId: 1071
+          suiteIds: [ 301 ]
+        strategy:
+          type: default
+          grades:
+            overall: [ 70, 50 ]
+            byCritical: [ 90, 70 ]

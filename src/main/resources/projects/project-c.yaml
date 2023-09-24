@@ -1,0 +1,32 @@
+name: project-c
+
+agents:
+  - launch:
+    providers:
+      - type: report-portal
+    strategies:
+      - type: default
+    launches:
+      - name: web-acceptance
+        platform: WEB
+        type: ACCEPTANCE
+      - name: web-smoke
+        platform: WEB
+        type: SMOKE
+      - name: api
+        platform: API
+        type: SMOKE
+  - coverage:
+    providers:
+      - type: test-rail
+    strategies:
+      - type: default
+    platforms:
+      - platform: WEB
+        provider:
+          type: test-rail
+          suiteIds: [ 717, 936 ]
+      - platform: API
+        provider:
+          type: test-rail
+          suiteIds: [ 303 ]
